@@ -214,6 +214,7 @@ const typeToFieldMap = {
   datetime: DatetimeField,
   timestamp: TimestampField,
   boolean: BooleanField,
+  raw: Field,
 };
 
 const createField = attribute => {

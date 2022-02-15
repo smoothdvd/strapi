@@ -176,6 +176,9 @@ const getColumnType = attribute => {
     case 'boolean': {
       return { type: 'boolean' };
     }
+    case 'raw': {
+      return { type: 'raw' };
+    }
     default: {
       throw new Error(`Unknown type ${attribute.type}`);
     }
