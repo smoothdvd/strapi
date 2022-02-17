@@ -98,7 +98,12 @@ module.exports = db => {
           // alter table
           const schemaBuilder = this.getSchemaBuilder(trx);
 
-          await helpers.alterTable(schemaBuilder, table);
+          // HACKCODE
+          // Skip alter tables exclude components related
+          if (table.name.startsWith('components_')) {
+            await helpers.alterTable(schemaBuilder, table);
+          } 
+          // await helpers.alterTable(schemaBuilder, table);
         }
       });
 
