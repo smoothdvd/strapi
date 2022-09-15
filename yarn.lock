@@ -9085,14 +9085,14 @@ cloudinary-core@^2.10.2:
   resolved "https://registry.yarnpkg.com/cloudinary-core/-/cloudinary-core-2.12.3.tgz#6482e472944214ff905c4852da0a4afce14dec2b"
   integrity sha512-Ll4eDzcrIVn4zCttMh3Mdi+KNz07p5EEjBT2PQSRx8Eok1lKPt3uBBenOk/w88RKK3B8SFIWcEe/mN4BHQ0p8A==
 
-cloudinary@^1.25.1:
-  version "1.29.0"
-  resolved "https://registry.yarnpkg.com/cloudinary/-/cloudinary-1.29.0.tgz#4e93bc6b8d710015d7ecea1829c869341d8e85bf"
-  integrity sha512-twqQvC5R5/RHenDVCbGc3ebww/HB/lBaxgoyy2aW2O/5bTzK7VbGpYsTGyV5zoiodlK8Z9SO0my9Gv92y+3K+g==
+cloudinary@^1.32.0:
+  version "1.32.0"
+  resolved "https://registry.yarnpkg.com/cloudinary/-/cloudinary-1.32.0.tgz#13e16f8238aa8d49b61db16450590c802a79e21c"
+  integrity sha512-hbc5/ilOkwD49+Lucqze3z+2Tejc3YdH4tkI+y1Ciabi9Qh9MYcy4M3rYeDAYiMS/jIz5FfHOzx+JjVnPJxNAQ==
   dependencies:
     cloudinary-core "^2.10.2"
-    core-js "3.6.5"
-    lodash "^4.17.11"
+    core-js "^3.6.5"
+    lodash "^4.17.21"
     q "^1.5.1"
   optionalDependencies:
     proxy-agent "^5.0.0"
@@ -9677,11 +9677,6 @@ core-js-pure@^3.8.1, core-js-pure@^3.8.2:
   version "3.23.3"
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.23.3.tgz#bcd02d3d8ec68ad871ef50d5ccbb248ddb54f401"
   integrity sha512-XpoouuqIj4P+GWtdyV8ZO3/u4KftkeDVMfvp+308eGMhCrA3lVDSmAxO0c6GGOcmgVlaKDrgWVMo49h2ab/TDA==
-
-core-js@3.6.5:
-  version "3.6.5"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.5.tgz#7395dc273af37fb2e50e9bd3d9fe841285231d1a"
-  integrity sha512-vZVEEwZoIsI+vPEuoF9Iqf5H7/M3eeQqWlQnYa8FSKKePuYTf5MWnxb5SDAzCa60b3JBRS5g9b+Dq7b1y/RCrA==
 
 core-js@^2.6.5:
   version "2.6.12"
