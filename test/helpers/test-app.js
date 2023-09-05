@@ -39,7 +39,7 @@ const generateTestApp = async ({ appPath, database, template, link = false }) =>
     quick: false,
     uuid: undefined,
     deviceId: null,
-    // use yarn if available and --use-npm isn't true
+    // use yarn if available and --use-npm and --use-pnpm aren't true
     useYarn: true,
     installDependencies: false,
     strapiDependencies: [

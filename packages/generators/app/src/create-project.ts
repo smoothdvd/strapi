@@ -28,6 +28,16 @@ export default async function createProject(
 
   const language = useTypescript ? 'ts' : 'js';
 
+  let packageManager = '';
+
+  if (scope.useYarn) {
+    packageManager = 'yarn';
+  } else if (scope.useNpm) {
+    packageManager = 'npm';
+  } else {
+    packageManager = 'pnpm';
+  }
+
   try {
     // copy files
     await fse.copy(join(resources, 'files', language), rootPath);
@@ -187,9 +197,7 @@ export default async function createProject(
       `Fix the issues mentioned in the installation errors and try to run the following command:`
     );
     console.log();
-    console.log(
-      `cd ${chalk.green(rootPath)} && ${chalk.cyan(scope.useYarn ? 'yarn' : 'npm')} install`
-    );
+    console.log(`cd ${chalk.green(rootPath)} && ${chalk.cyan(packageManager)} install`);
     console.log();
 
     stopProcess();
@@ -206,7 +214,7 @@ export default async function createProject(
   console.log();
   console.log(`Your application was created at ${chalk.green(rootPath)}.\n`);
 
-  const cmd = chalk.cyan(scope.useYarn ? 'yarn' : 'npm run');
+  const cmd = chalk.cyan(packageManager);
 
   console.log('Available commands in your project:');
   console.log();
@@ -232,12 +240,22 @@ export default async function createProject(
 }
 
 const installArguments = ['install', '--production', '--no-optional'];
-function runInstall({ rootPath, useYarn }: Scope) {
+function runInstall({ rootPath, useYarn, usePnpm }: Scope) {
   if (useYarn) {
     // Increase timeout for slow internet connections.
     installArguments.push('--network-timeout 1000000');
 
     return execa('yarnpkg', installArguments, {
+      cwd: rootPath,
+      stdin: 'ignore',
+    });
+  }
+
+  if (usePnpm) {
+    // Creates a flat node_modules structure, similar to that of npm or yarn
+    installArguments.push('--shamefully-hoist');
+
+    return execa('pnpm', installArguments, {
       cwd: rootPath,
       stdin: 'ignore',
     });

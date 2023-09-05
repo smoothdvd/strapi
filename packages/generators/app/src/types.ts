@@ -8,6 +8,8 @@ export interface Scope {
   additionalsDependencies: Record<string, string>;
   docker: boolean;
   useYarn: boolean;
+  useNpm: boolean;
+  usePnpm: boolean;
   useTypescript: boolean;
   runQuickstartApp: boolean;
   quick?: boolean;
@@ -22,6 +24,7 @@ export interface Scope {
 
 export interface NewOptions {
   useNpm: boolean;
+  usePnpm: boolean;
   run: boolean;
   debug: boolean;
   quickstart: boolean;

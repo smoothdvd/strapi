@@ -1,5 +1,7 @@
 export interface Options {
   useYarn?: boolean;
+  useNpm?: boolean;
+  usePnpm?: boolean;
 }
 
 export interface PackageInfo {
@@ -9,6 +11,7 @@ export interface PackageInfo {
 
 export interface Program {
   useNpm?: boolean;
+  usePnpm?: boolean;
   debug?: boolean;
   quickstart?: boolean;
   dbclient?: string;

@@ -11,6 +11,7 @@ module.exports = ({ command }) => {
     .command('new <directory>')
     .option('--no-run', 'Do not start the application after it is created')
     .option('--use-npm', 'Force usage of npm instead of yarn to create the project')
+    .option('--use-pnpm', 'Force usage of pnpm instead of yarn to create the project')
     .option('--debug', 'Display database connection errors')
     .option('--quickstart', 'Create quickstart app')
     .option('--dbclient <dbclient>', 'Database client')

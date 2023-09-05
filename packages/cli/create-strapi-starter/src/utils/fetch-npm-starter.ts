@@ -8,7 +8,7 @@ import type { Options, PackageInfo } from '../types';
  * Gets the package version on npm. Will fail if the package does not exist
  */
 async function getPackageInfo(packageName: string, options?: Options): Promise<PackageInfo> {
-  const { useYarn } = options ?? {};
+  const { useYarn, usePnpm } = options ?? {};
 
   // Use yarn if possible because it's faster
   if (useYarn) {
@@ -17,6 +17,16 @@ async function getPackageInfo(packageName: string, options?: Options): Promise<P
     return {
       name: yarnInfo.data.name,
       version: yarnInfo.data.version,
+    };
+  }
+
+  // Use Pnpm if possiable
+  if (usePnpm) {
+    const { stdout } = await execa('pnpm', ['info', packageName, '--json']);
+    const pnpmInfo = JSON.parse(stdout);
+    return {
+      name: pnpmInfo.data.name,
+      version: pnpmInfo.data.version,
     };
   }
 
@@ -66,11 +76,16 @@ export async function downloadNpmStarter(
   options?: Options
 ): Promise<string> {
   const { name, version } = packageInfo;
-  const { useYarn } = options ?? {};
+  const { useYarn, usePnpm } = options ?? {};
 
   // Download from npm, using yarn if possible
   if (useYarn) {
     await execa('yarn', ['add', `${name}@${version}`, '--no-lockfile', '--silent'], {
+      cwd: parentDir,
+    });
+  }
+  if (usePnpm) {
+    await execa('pnpm', ['install', `${name}@${version}`, '--no-lockfile', '--silent'], {
       cwd: parentDir,
     });
   } else {

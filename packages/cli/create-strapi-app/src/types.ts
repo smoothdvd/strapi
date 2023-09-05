@@ -1,6 +1,7 @@
 export interface Program {
   noRun?: boolean;
   useNpm?: boolean;
+  usePnpm?: boolean;
   debug?: boolean;
   quickstart?: boolean;
   dbclient?: string;

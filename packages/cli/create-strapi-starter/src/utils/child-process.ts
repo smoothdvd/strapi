@@ -3,15 +3,32 @@ import execa from 'execa';
 import logger from './logger';
 import type { Options } from '../types';
 
-export function runInstall(path: string, { useYarn }: Options = {}) {
-  return execa(useYarn ? 'yarn' : 'npm', ['install'], {
+export function runInstall(path: string, { useYarn, useNpm }: Options = {}) {
+  let packageManager = '';
+
+  if (useYarn) {
+    packageManager = 'yarn';
+  } else if (useNpm) {
+    packageManager = 'npm';
+  } else {
+    packageManager = 'pnpm';
+  }
+
+  return execa(packageManager, ['install'], {
     cwd: path,
     stdin: 'ignore',
   });
 }
-export function runApp(rootPath: string, { useYarn }: Options = {}) {
+export function runApp(rootPath: string, { useYarn, usePnpm }: Options = {}) {
   if (useYarn) {
     return execa('yarn', ['develop'], {
+      stdio: 'inherit',
+      cwd: rootPath,
+    });
+  }
+
+  if (usePnpm) {
+    return execa('pnpm', ['develop'], {
       stdio: 'inherit',
       cwd: rootPath,
     });

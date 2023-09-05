@@ -18,6 +18,12 @@ Using npx
 npx create-strapi-starter my-project starter-url
 ```
 
+Using pnpx
+
+```
+pnpx create-strapi-starter my-project starter-url
+```
+
 ### Manual install
 
 Using yarn
@@ -31,5 +37,12 @@ Using npm
 
 ```
 npm install -g create-strapi-app
+create-strapi-starter my-project starter-url
+```
+
+Using pnpm
+
+```
+pnpm install -g create-strapi-app
 create-strapi-starter my-project starter-url
 ```

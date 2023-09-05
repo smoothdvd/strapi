@@ -29,6 +29,8 @@ export const generateNewApp = (projectDirectory: string, options: Partial<NewOpt
 
   const useNpm = options.useNpm !== undefined;
 
+  const usePnpm = options.usePnpm !== undefined;
+
   const scope: Scope = {
     rootPath,
     name: basename(rootPath),
@@ -48,7 +50,9 @@ export const generateNewApp = (projectDirectory: string, options: Partial<NewOpt
     deviceId: machineID(),
     tmpPath,
     // use yarn if available and --use-npm isn't true
-    useYarn: !useNpm && hasYarn(),
+    useYarn: !useNpm && !usePnpm && hasYarn(),
+    useNpm,
+    usePnpm,
     installDependencies: true,
     strapiDependencies: [
       '@strapi/strapi',

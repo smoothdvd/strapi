@@ -31,6 +31,7 @@ program
   .version(packageJson.version)
   .arguments('[directory], [starter]')
   .option('--use-npm', 'Force usage of npm instead of yarn to create the project')
+  .option('--use-pnpm', 'Force usage of pnpm instead of yarn to create the project')
   .option('--debug', 'Display database connection error')
   .option('--quickstart', 'Quickstart app creation')
   .option('--dbclient <dbclient>', 'Database client')
